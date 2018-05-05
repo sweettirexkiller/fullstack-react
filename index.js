@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 // Tell mongoose to use these schemas:
 require('./models/user');
 
-// Configuring strategies for authentication
+// Configuring strategies for authentication with passport
 require('./services/passport');
 
 // App initialization
