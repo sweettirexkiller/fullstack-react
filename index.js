@@ -14,12 +14,10 @@ const app = express();
 app.use(morganLogger('dev'));
 
 // Database connection
-mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, {useMongoClient: true});
+mongoose.connect(keys.mongoURI);
 
 // Routes for authentication
 require('./routes/authRoutes')(app);
-
 
 // Server port activation
 const PORT = process.env.PORT || 5000;
