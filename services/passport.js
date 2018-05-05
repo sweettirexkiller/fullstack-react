@@ -9,12 +9,14 @@ passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback'
-}, async (accessToken, refreshToken, profile, done) => {
-    const user = await User.findOne({googleId: profile.id});
-    if (user) {
-        done(null, user);
-    } else {
-        await new User({googleId: profile.id, displayName: profile.displayName}).save();
-        done(null, user)
-    }
+}, (accessToken, refreshToken, profile, done) => {
+    User.findOne({googleId: profile.id}).then(user => {
+        if (user) {
+            done(null, user);
+        } else {
+            new User({googleId: profile.id, displayName: profile.displayName}).save().then(user => {
+                done(null, user)
+            });
+        }
+    });
 }));
