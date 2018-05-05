@@ -1,8 +1,11 @@
+//required packages
 const express = require('express');
-const createError = require('http-errors');
+const morganLogger = require('morgan');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
-const morganLogger = require('morgan');
+
+// Tell mongoose to use these schemas:
+require('./models/user');
 
 // Configuring strategies for authentication
 require('./services/passport');
@@ -21,6 +24,6 @@ require('./routes/authRoutes')(app);
 
 // Server port activation
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
