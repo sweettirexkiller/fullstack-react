@@ -1,6 +1,6 @@
 //required packages
 const express = require('express');
-const cookieSession = require('cookie-session');
+const cookieSession = require('cookie-session'); // vs express-session that uses sessions in the 'session store'
 const passport = require('passport');
 const morganLogger = require('morgan');
 const keys = require('./config/keys');
@@ -15,7 +15,7 @@ require('./services/passport');
 // App initialization
 const app = express();
 
-// Tell express how to use cookies and sessions
+// Tell express how to use cookies and sessions <-- this is additional middleware
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -23,11 +23,11 @@ app.use(
     })
 );
 
-// Tell express that passport can use sessions
+// Tell express that passport can use sessions <-- this are additional middlewares
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); // it creates 'passport' session
 
-// Terminal incoming requests logger
+// Terminal incoming requests logger <-- this is additional middleware
 app.use(morganLogger('dev'));
 
 // Database connection
