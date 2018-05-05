@@ -1,6 +1,6 @@
 //required packages
 const express = require('express');
-const cookieSession = require('cookie-session'); // vs express-session that uses sessions in the 'session store'
+const cookieSession = require('cookie-session'); // vs express-session that uses sessions in the 'session store' (for a bigger app)
 const passport = require('passport');
 const morganLogger = require('morgan');
 const keys = require('./config/keys');
