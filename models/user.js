@@ -6,4 +6,5 @@ const userSchema = new Schema({
     displayName: {type: String, required: true}
 });
 
-mongoose.model('User', userSchema);
+mongoose.model('User', userSchema); // We are not exporting this model because
+                                    // it sometimes makes problems in testing environment
