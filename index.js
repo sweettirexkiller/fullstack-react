@@ -40,6 +40,17 @@ mongoose.connect(keys.mongoURI);
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+if (process.env.NODE_ENV === 'production') {
+    // express will serve up production assets
+    app.use(express.static('client/build'));
+    // express will serve index.html if does not recognize routes
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+
+
 // Server port activation
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
