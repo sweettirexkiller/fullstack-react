@@ -15,6 +15,9 @@ require('./services/passport');
 // App initialization
 const app = express();
 
+// Parse body of requests
+app.use(express.json());
+
 // Tell express how to use cookies and sessions <-- this is additional middleware
 app.use(
     cookieSession({
