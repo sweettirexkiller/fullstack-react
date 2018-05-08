@@ -35,6 +35,7 @@ mongoose.connect(keys.mongoURI);
 
 // Routes for authentication
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 // Server port activation
 const PORT = process.env.PORT || 5000;
