@@ -13,7 +13,7 @@
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webhook":"./sendgrid_webhook.sh"
+    "webhook": "./sendgrid_webhook.sh"
   },
   "author": "Piotr Jankiewicz",
   "license": "ISC",
@@ -29,7 +29,7 @@
     "nodemon": "^1.17.3",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "redux-form": "^7.3.0",
+    "path-parser": "^2.0.2",
     "sendgrid": "^5.2.3",
     "stripe": "^5.8.0"
   }
